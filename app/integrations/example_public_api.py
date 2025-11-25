@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 import httpx
 
 from ..config import settings
@@ -19,7 +19,7 @@ class ExamplePublicAPIClient(ExternalDataClient):
         self.base_url = settings.EXTERNAL_API_BASE_URL
         self.api_key = settings.EXTERNAL_API_KEY
 
-    async def fetch(self, endpoint: str, params: dict[str, Any] | None = None) -> Any:
+    async def fetch(self, endpoint: str, params: Optional[dict[str, Any]] = None) -> Any:
         headers: dict[str, str] = {}
         if self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"

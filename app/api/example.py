@@ -1,3 +1,4 @@
+from typing import Optional
 from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import List
@@ -9,7 +10,7 @@ router = APIRouter(prefix="/example", tags=["example"])
 class Item(BaseModel):
     id: int
     name: str
-    description: str | None = None
+    description: Optional[str] = None
 
 
 _FAKE_DB: list[Item] = [
